@@ -57,9 +57,9 @@
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
-            <Menu mnemonicParsing="false" text="Управління">
+            <Menu mnemonicParsing="false" text="Додати команду">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="Таблиця команд" />
+                  <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="NOP(00)" />
                </items>
             </Menu>
       </menus>

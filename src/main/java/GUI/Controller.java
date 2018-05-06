@@ -2,10 +2,12 @@ package GUI;
 
 import GUI.TableData.DataModel;
 import GUI.TableData.DataModelObservableList;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -77,6 +79,20 @@ public class Controller implements Initializable {
 
     }
 
+    private void setDataInRow(String address, String value){
+        for (int i = 0; i < dataModelObservableList.getDataModels().size(); i++) {
+            if (address.equals(dataModelObservableList.getDataModels().get(i).getAddress().getValue())){
+                setDataInCell(i, value);
+                tblData.refresh();
+                break;
+            }
+        }
+    }
+
+    private void setDataInCell(int indexOfCell, String value){
+        dataModelObservableList.getDataModels().get(indexOfCell).setValue(new SimpleStringProperty(value));
+    }
+
     public void on0(ActionEvent actionEvent) {
     }
 
@@ -126,6 +142,7 @@ public class Controller implements Initializable {
     }
 
     public void onSetValue(ActionEvent actionEvent) {
+        setDataInRow(tbAddress.getText(), tbValue.getText());
     }
 
     public void onBreak(ActionEvent actionEvent) {
