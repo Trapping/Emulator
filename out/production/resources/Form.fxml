@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
 
 <VBox prefHeight="483.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller">
   <children>
@@ -57,9 +58,9 @@
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
-            <Menu mnemonicParsing="false" text="Управління">
+            <Menu mnemonicParsing="false" text="Додати команду">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="Таблиця команд" />
+                  <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="NOP(00)" />
                </items>
             </Menu>
       </menus>
@@ -143,11 +144,6 @@
                   <Font size="17.0" />
                </font>
             </TextField>
-            <TextField fx:id="tbValue" layoutX="259.0" layoutY="221.0" prefHeight="38.0" prefWidth="61.0" text="0000">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </TextField>
             <Label layoutX="187.0" layoutY="196.0" text="Адреса" />
             <Label layoutX="259.0" layoutY="196.0" text="Значення" />
             <Button layoutX="187.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSetValue" prefHeight="25.0" prefWidth="134.0" text="Встановити значення" />
@@ -179,6 +175,7 @@
             <Button layoutX="23.0" layoutY="333.0" mnemonicParsing="false" onAction="#onAddress" prefHeight="25.0" prefWidth="53.0" text="Адрес" />
             <Button layoutX="84.0" layoutY="333.0" mnemonicParsing="false" onAction="#onValue" text="Значення" />
             <Button layoutX="23.0" layoutY="366.0" mnemonicParsing="false" onAction="#onRegister" text="Регістр" />
+            <CustomTextField fx:id="tbValue" layoutX="251.0" layoutY="221.0" prefHeight="38.0" prefWidth="61.0" />
          </children>
     </AnchorPane>
   </children>

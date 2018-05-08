@@ -2,15 +2,20 @@ package GUI;
 
 import GUI.TableData.DataModel;
 import GUI.TableData.DataModelObservableList;
+import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.CustomTextField;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class Controller implements Initializable {
     @FXML
@@ -40,8 +45,6 @@ public class Controller implements Initializable {
     @FXML
     public TextField tbAddress;
     @FXML
-    public TextField tbValue;
-    @FXML
     public TableView<DataModel> tblData;
     @FXML
     public RadioButton tglStep;
@@ -57,6 +60,8 @@ public class Controller implements Initializable {
     public TableColumn<DataModel, String> clmCode;
     @FXML
     public TableColumn<DataModel, String> clmValue;
+    @FXML
+    public CustomTextField tbValue;
 
     private DataModelObservableList dataModelObservableList = new DataModelObservableList();
 
@@ -69,6 +74,12 @@ public class Controller implements Initializable {
         tblData.setItems(dataModelObservableList.getDataModels());
         tblData.setEditable(false);
         tblData.setSortPolicy(param -> false);
+
+        AutoCompletionBinding<String> autoCompletionBinding;
+        String[] suggestions = {"MOV H,L", "MOV A,H"};
+        Set<String> possibleSuggestions = new HashSet<>(Arrays.asList(suggestions));
+
+        TextFields.bindAutoCompletion(tbValue, possibleSuggestions);
 
         int startValue = 0x8000;
 
