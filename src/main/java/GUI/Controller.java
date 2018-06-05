@@ -1,15 +1,14 @@
 package GUI;
 
+import Core.Core8080;
 import GUI.TableData.DataModel;
 import GUI.TableData.DataModelObservableList;
-import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import javafx.util.Callback;
+import javafx.scene.input.KeyEvent;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.control.textfield.TextFields;
@@ -65,6 +64,8 @@ public class Controller implements Initializable {
 
     private DataModelObservableList dataModelObservableList = new DataModelObservableList();
 
+    private Core8080 core8080;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         clmAddress.setCellValueFactory(cellData -> cellData.getValue().getAddress());
@@ -74,6 +75,9 @@ public class Controller implements Initializable {
         tblData.setItems(dataModelObservableList.getDataModels());
         tblData.setEditable(false);
         tblData.setSortPolicy(param -> false);
+
+
+        core8080 = new Core8080();
 
         AutoCompletionBinding<String> autoCompletionBinding;
         String[] suggestions = {"MOV H,L", "MOV A,H"};
@@ -88,11 +92,13 @@ public class Controller implements Initializable {
             startValue++;
         }
 
+        tblData.refresh();
+
     }
 
-    private void setDataInRow(String address, String value){
+    private void setDataInRow(String address, String value) {
         for (int i = 0; i < dataModelObservableList.getDataModels().size(); i++) {
-            if (address.equals(dataModelObservableList.getDataModels().get(i).getAddress().getValue())){
+            if (address.equals(dataModelObservableList.getDataModels().get(i).getAddress().getValue())) {
                 setDataInCell(i, value);
                 tblData.refresh();
                 break;
@@ -100,7 +106,7 @@ public class Controller implements Initializable {
         }
     }
 
-    private void setDataInCell(int indexOfCell, String value){
+    private void setDataInCell(int indexOfCell, String value) {
         dataModelObservableList.getDataModels().get(indexOfCell).setValue(new SimpleStringProperty(value));
     }
 
@@ -157,6 +163,8 @@ public class Controller implements Initializable {
     }
 
     public void onBreak(ActionEvent actionEvent) {
+        core8080.i8080_init();
+        refreshRegs();
     }
 
     public void onAdPlus(ActionEvent actionEvent) {
@@ -178,5 +186,34 @@ public class Controller implements Initializable {
     }
 
     public void onComandsTableClicked(ActionEvent actionEvent) {
+    }
+
+    public void tbAddressEdited(ActionEvent actionEvent) {
+    }
+
+    public void tbAdressKeyTypeDetected(KeyEvent keyEvent) {
+        int index = -1;
+        int i = 0;
+        for (DataModel dataModel: dataModelObservableList.getDataModels()
+             ) {
+            i ++;
+            if (dataModel.getAddress().getValue().equals(tbAddress.getText())){
+                index = i;
+                break;
+            }
+        }
+
+        if (index > -1) {
+            tblData.getSelectionModel().select(index -1);
+            tblData.scrollTo(index -1);
+        }
+    }
+
+    public void refreshRegs(){
+        rgA.setText(String.valueOf(core8080.i8080_regs_a()));
+        rgB.setText(String.valueOf(core8080.i8080_regs_b()));
+        rgC.setText(String.valueOf(core8080.i8080_regs_c()));
+        rgD.setText(String.valueOf(core8080.i8080_regs_d()));
+        rgE.setText(String.valueOf(core8080.i8080_regs_e()));
     }
 }

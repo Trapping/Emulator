@@ -23,7 +23,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(panel);
 
-        primaryStage.setTitle("Simple Controller");
+        primaryStage.setTitle("Intel 8080A Emulator");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

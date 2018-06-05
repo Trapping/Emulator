@@ -1,13 +1,3 @@
-buildscript {
-    ext.kotlin_version = '1.2.30'
-
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
 
 buildscript {
     dependencies {
@@ -31,7 +21,6 @@ group 'Emu8080a'
 version '1.0-ALPHA'
 
 apply plugin: 'java'
-apply plugin: 'kotlin'
 
 sourceCompatibility = 1.8
 
@@ -40,21 +29,21 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.controlsfx:controlsfx:8.40.14'
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    compile fileTree(dir: 'libs', include: ['*.*'])
 }
 
 
 
 apply plugin: 'javafx-gradle-plugin'
+
+task addNativeLibs(type: Copy) {
+    from 'natives'
+    into "build/jfx/native/$jfx.appName"
+}
+
+jfxJar.dependsOn addNativeLibs
 
 // these values are the examples and defaults
 // you won't need them all
