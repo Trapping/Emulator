@@ -1,9 +1,14 @@
 package Core;
 
+import java.io.File;
+
 public class Core8080 {
 
-    static {
-        System.load("D:\\IntelliJ Projects\\Emulator\\src\\libs\\i8080.dll");
+        //System.load("D:\\IntelliJ Projects\\Emulator\\src\\libs\\i8080.dll");
+
+    public Core8080() {
+        String path = new File("i8080.dll").getAbsolutePath();
+        System.load(path);
     }
 
     public native void i8080_init();
