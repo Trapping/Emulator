@@ -18,7 +18,7 @@ repositories {
 }
 
 group 'Emu8080a'
-version '1.0-ALPHA'
+version '1.1-BETA'
 
 apply plugin: 'java'
 
@@ -31,19 +31,11 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.controlsfx:controlsfx:8.40.14'
-    compile fileTree(dir: 'libs', include: ['*.*'])
 }
 
 
 
 apply plugin: 'javafx-gradle-plugin'
-
-task addNativeLibs(type: Copy) {
-    from 'natives'
-    into "build/jfx/native/$jfx.appName"
-}
-
-jfxJar.dependsOn addNativeLibs
 
 // these values are the examples and defaults
 // you won't need them all
@@ -52,7 +44,7 @@ jfxJar.dependsOn addNativeLibs
 // for all available settings please look at the class "JavaFXGradlePluginExtension"
 jfx {
     verbose = true
-    mainClass = "com.something.cool.MainApp"
+    mainClass = "Main"
     jfxAppOutputDir = "build/jfx/app"
     jfxMainAppJarName = "project-jfx.jar"
     deployDir = "src/main/deploy"
@@ -73,7 +65,7 @@ jfx {
 
     // gradle jfxNative
     identifier = null  // String - setting this for windows-bundlers makes it possible to generate upgradeable installers (using same GUID)
-    vendor = "some serious business corp."
+    vendor = "Viktor Leventsov"
     nativeOutputDir = "build/jfx/native"
     bundler = "ALL" // set this to some specific, if your don't want all bundlers running, examples "windows.app", "jnlp", ...
     jvmProperties = null // Map<String, String>
@@ -87,7 +79,7 @@ jfx {
             // dont bundle JRE (not recommended, but increases build-size/-speed)
             runtime: null
     ]
-    appName = "project" // this is used for files below "src/main/deploy", e.g. "src/main/deploy/package/windows/project.ico"
+    appName = "Emu8080a" // this is used for files below "src/main/deploy", e.g. "src/main/deploy/package/windows/project.ico"
     additionalBundlerResources = null // path to some additional resources for the bundlers when creating application-bundle
     additionalAppResources = null // path to some additional resources when creating application-bundle
     secondaryLaunchers = [[appName:"somethingDifferent"], [appName:"somethingDifferent2"]]
