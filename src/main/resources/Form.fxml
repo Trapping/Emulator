@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -24,46 +23,31 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="File">
+        <Menu mnemonicParsing="false" text="Файл">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" onAction="#mnFileSave" text="Зберегти" />
+            <MenuItem mnemonicParsing="false" onAction="#mnFileLoad" text="Завантажити..." />
+            <MenuItem mnemonicParsing="false" onAction="#mnFileQuit" text="Вийти" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Правка">
           <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
+            <MenuItem mnemonicParsing="false" text="Вирізати" />
+            <MenuItem mnemonicParsing="false" text="Копіювати" />
+            <MenuItem mnemonicParsing="false" text="Вставити" />
+            <MenuItem mnemonicParsing="false" text="Очистити" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-            <Menu mnemonicParsing="false" text="Додати команду">
+            <Menu mnemonicParsing="false" text="Команди">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="NOP(00)" />
+                  <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="Таблиця мнемоніки команд..." />
                </items>
             </Menu>
+        <Menu mnemonicParsing="false" text="Довідка">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Про програму" />
+          </items>
+        </Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="437.0" prefWidth="691.0" VBox.vgrow="ALWAYS">
@@ -176,8 +160,11 @@
             <Button layoutX="23.0" layoutY="333.0" mnemonicParsing="false" onAction="#onAddress" prefHeight="25.0" prefWidth="53.0" text="Адрес" />
             <Button layoutX="84.0" layoutY="333.0" mnemonicParsing="false" onAction="#onValue" text="Значення" />
             <Button layoutX="23.0" layoutY="366.0" mnemonicParsing="false" onAction="#onRegister" text="Регістр" />
-            <CustomTextField fx:id="tbValue" layoutX="251.0" layoutY="221.0" prefHeight="38.0" prefWidth="61.0" />
-            <ToggleButton fx:id="tglSafeInput" layoutX="188.0" layoutY="333.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" selected="true" text="Безпечне введення" />
+            <CustomTextField fx:id="tbValue" alignment="CENTER" layoutX="251.0" layoutY="221.0" prefHeight="38.0" prefWidth="61.0" text="0000">
+               <font>
+                  <Font size="17.0" />
+               </font></CustomTextField>
+            <ToggleButton fx:id="tglSafeInput" layoutX="188.0" layoutY="333.0" mnemonicParsing="false" onAction="#tglSafeInputSelectedChange" prefHeight="25.0" prefWidth="126.0" selected="true" text="Безпечне введення" />
          </children>
     </AnchorPane>
   </children>

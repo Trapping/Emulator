@@ -12,10 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.control.textfield.TextFields;
 import org.controlsfx.dialog.ExceptionDialog;
 
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 
@@ -67,7 +69,7 @@ public class Controller implements Initializable {
     @FXML
     public ToggleButton tglSafeInput;
 
-    private int adressMarker;
+    private int addressMarker;
 
     private CommandsList commandsList;
 
@@ -184,6 +186,7 @@ public class Controller implements Initializable {
         commandsList.addCommand(new Command("1A", "LDAX D"));
         commandsList.addCommand(new Command("2A", "LHLD a16"));
         commandsList.addCommand(new Command("1", "LXI B,d16"));
+        commandsList.addCommand(new Command("11", "LXI D,d16"));
         commandsList.addCommand(new Command("21", "LXI H,d16"));
         commandsList.addCommand(new Command("31", "LXI SP,d16"));
         commandsList.addCommand(new Command("7F", "MOV A,A"));
@@ -281,7 +284,6 @@ public class Controller implements Initializable {
         commandsList.addCommand(new Command("1F", "RAR"));
         commandsList.addCommand(new Command("7", "RLC"));
         commandsList.addCommand(new Command("0F", "RRC"));
-        commandsList.addCommand(new Command("20", "RIM"));
         commandsList.addCommand(new Command("C9", "RET"));
         commandsList.addCommand(new Command("C8", "RZ"));
         commandsList.addCommand(new Command("C0", "RNZ"));
@@ -299,7 +301,6 @@ public class Controller implements Initializable {
         commandsList.addCommand(new Command("EF", "RST 5"));
         commandsList.addCommand(new Command("F7", "RST 6"));
         commandsList.addCommand(new Command("FF", "RST 7"));
-        commandsList.addCommand(new Command("30", "SIM"));
         commandsList.addCommand(new Command("F9", "SPHL"));
         commandsList.addCommand(new Command("22", "SHLD a16"));
         commandsList.addCommand(new Command("32", "STA a16"));
@@ -349,7 +350,13 @@ public class Controller implements Initializable {
 
         tblData.refresh();
 
+        //core8080.i8080_init();
+
+
         core8080.i8080_init();
+        markAddress(Integer.parseUnsignedInt("8000", 16));
+        safeScrollTable(getIndexOfAdressInTable("8000"));
+        refreshRegs();
 
     }
 
@@ -450,7 +457,7 @@ public class Controller implements Initializable {
 
     public void onSetValue(ActionEvent actionEvent) {
         try {
-            adressMarker = Integer.parseUnsignedInt(tbAddress.getText(), 16);
+            addressMarker = Integer.parseUnsignedInt(tbAddress.getText(), 16);
         } catch (NumberFormatException e){
             e.printStackTrace();
             return;
@@ -464,27 +471,31 @@ public class Controller implements Initializable {
 
     public void onBreak(ActionEvent actionEvent) {
         core8080.i8080_init();
+        markAddress(Integer.parseUnsignedInt("8000", 16));
+        safeScrollTable(getIndexOfAdressInTable("8000"));
         refreshRegs();
     }
 
     public void onAdPlus(ActionEvent actionEvent) {
-        incrementMarkedAddress(adressMarker);
+        incrementMarkedAddress(addressMarker);
     }
 
     public void onAdMinus(ActionEvent actionEvent) {
-        decrementMarkedAddress(adressMarker);
+        decrementMarkedAddress(addressMarker);
     }
 
     public void onStart(ActionEvent actionEvent) {
         core8080.i8080_instruction();
         markAddress(core8080.i8080_pc());
         refreshRegs();
+        safeScrollTable(getIndexOfAdressInTable(Integer.toHexString(addressMarker).toUpperCase()));
     }
 
     public void onAddress(ActionEvent actionEvent) {
-        //adressMarker = Integer.parseUnsignedInt(tbAddress.getText(), 16);
+        //addressMarker = Integer.parseUnsignedInt(tbAddress.getText(), 16);
         markAddress(Integer.parseUnsignedInt(tbAddress.getText(), 16));
-        core8080.i8080_jump(adressMarker);
+        safeScrollTable(getIndexOfAdressInTable(Integer.toHexString(addressMarker)));
+        core8080.i8080_jump(addressMarker);
 
     }
 
@@ -552,22 +563,85 @@ public class Controller implements Initializable {
     }
 
     public void markAddress(int address){
-        adressMarker = address;
+        addressMarker = address;
         tbAddress.setText(Integer.toHexString(address).toUpperCase());
+        int index = getIndexOfAdressInTable(Integer.toHexString(address -1).toUpperCase());
+        tblData.getSelectionModel().select(index);
+        //safeScrollTable(index);
         core8080.i8080_jump(address);
+    }
+
+    public void safeScrollTable(int index){
+        if (index > 10){
+            tblData.scrollTo(index -5);
+        }
+    }
+
+    public int getIndexOfAdressInTable(String address){
+        int index = -1;
+        int i = 0;
+        for (DataModel dataModel: dataModelObservableList.getDataModels()
+                ) {
+            i ++;
+            if (dataModel.getAddress().getValue().equals(address)){
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
     public void incrementMarkedAddress(int address){
         markAddress(++address);
+        safeScrollTable(getIndexOfAdressInTable(Integer.toHexString(address -1).toUpperCase()));
     }
 
     public void decrementMarkedAddress(int address){
         markAddress(--address);
+        safeScrollTable(getIndexOfAdressInTable(Integer.toHexString(address -1).toUpperCase()));
     }
 
     public void onTblDataMouseClicked(MouseEvent mouseEvent) {
         int selectedAddress = getIntFromAdressInTable(tblData.getSelectionModel().getFocusedIndex());
         markAddress(selectedAddress);
-        System.out.println("Було виділено адресу: " + selectedAddress);
+    }
+
+    public void mnFileSave(ActionEvent actionEvent) {
+        StringBuilder string = new StringBuilder();
+        for (DataModel dataModel: tblData.getItems()
+             ) {
+            //System.out.println(dataModel.toString());
+            string.insert(string.length(), dataModel.toString() + "\n");
+        }
+        System.out.println(string + "\n Ці данні збережено!");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Збереження програми");
+        File file = fileChooser.showSaveDialog(tblData.getScene().getWindow());
+
+        try(FileWriter fileWriter = new FileWriter(file)) {
+            fileWriter.write(String.valueOf(string));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mnFileLoad(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Завантаження програми");
+        File file = fileChooser.showOpenDialog(tblData.getScene().getWindow());
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
+            String stringLine;
+            while ((stringLine = bufferedReader.readLine()) != null){
+                System.out.println(DataModel.parseDataModel(stringLine).toString());
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void mnFileQuit(ActionEvent actionEvent) {
+    }
+
+    public void tglSafeInputSelectedChange(ActionEvent actionEvent) {
     }
 }

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c4721df-f611-47f4-a3d5-72cc4f43a42a" name="Default" comment="">
+    <list default="true" id="0c4721df-f611-47f4-a3d5-72cc4f43a42a" name="Default" comment="First alpha">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/GUI/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/GUI/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/GUI/TableData/DataModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/GUI/TableData/DataModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/Form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/Form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/i8080.dll" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i8080.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/CommandsList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/CommandsList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Core8080.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Core8080.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/TableData/DataModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/TableData/DataModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Form.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -86,7 +85,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
+            <state relative-caret-position="289">
               <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -97,24 +96,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUI/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="530" column="57" lean-forward="true" selection-start-line="530" selection-start-column="57" selection-end-line="530" selection-end-column="57" />
+            <state relative-caret-position="133">
+              <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1870#18050#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Core8080.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Core/Core8080.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -529,15 +518,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/Form.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/Core/Hexadecimal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GUI/TableData/DataModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/Core/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/Core/I8080Core.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/GUI/TableData/DataModelObservableList.java" />
         <option value="$PROJECT_DIR$/src/main/java/Core/CommandsList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GUI/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/Core/Core8080.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GUI/TableData/DataModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GUI/Controller.java" />
       </list>
     </option>
   </component>
@@ -552,7 +541,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -584,14 +572,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Emulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Emulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -614,8 +594,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -841,7 +822,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528192040085</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="First alpha">
+      <created>1528393747978</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1528393747978</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -852,28 +840,28 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="DB Browser" order="2" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32838285" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32673267" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32673267" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32838285" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.46078432" visible="true" weight="0.3192133" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.45544556" visible="true" weight="0.22844176" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.32980332" />
-      <window_info id="Structure" order="1" sideWeight="0.5392157" side_tool="true" visible="true" weight="0.3192133" />
+      <window_info id="Structure" order="1" sideWeight="0.5445545" side_tool="true" weight="0.34039333" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990461" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32838285" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.339934" />
@@ -889,7 +877,8 @@
     <MESSAGE value="Commands added" />
     <MESSAGE value="Core added" />
     <MESSAGE value="Dll added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dll added" />
+    <MESSAGE value="First alpha" />
+    <option name="LAST_COMMIT_MESSAGE" value="First alpha" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -899,11 +888,10 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/GUI/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7837">
-          <caret line="461" column="9" selection-start-line="461" selection-start-column="9" selection-end-line="461" selection-end-column="9" />
+        <state relative-caret-position="5695">
+          <caret line="335" column="61" lean-forward="true" selection-start-line="335" selection-start-column="61" selection-end-line="335" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1870#18050#0" />
           </folding>
         </state>
       </provider>
@@ -1218,13 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Development/jdk1.8.0_161/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="87" column="19" lean-forward="true" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Core/Hexadecimal.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GUI/PickCommandController.java" />
     <entry file="jar://D:/Development/jdk1.8.0_161/src.zip!/java/lang/Object.java">
@@ -1238,20 +1219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="137" column="1" selection-start-line="137" selection-start-column="1" selection-end-line="137" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TableData/DataModelObservableList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TableData/DataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1271,7 +1238,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
+        <state relative-caret-position="289">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1281,21 +1248,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Core/Core8080.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="530" column="57" lean-forward="true" selection-start-line="530" selection-start-column="57" selection-end-line="530" selection-end-column="57" />
+        <state relative-caret-position="374">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TableData/DataModelObservableList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Development/jdk1.8.0_161/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-681">
+          <caret line="531" column="22" selection-start-line="531" selection-start-column="22" selection-end-line="531" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1870#18050#0" />
+            <element signature="e#7967#7968#0" expanded="true" />
+            <element signature="e#8013#8014#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Core/Core8080.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/TableData/DataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="272">
+          <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GUI/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
