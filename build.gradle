@@ -18,7 +18,7 @@ repositories {
 }
 
 group 'Emu8080a'
-version '1.1-BETA'
+version '1.2-BETA'
 
 apply plugin: 'java'
 
@@ -31,6 +31,10 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.controlsfx:controlsfx:8.40.14'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi
+    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
 }
 
 

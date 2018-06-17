@@ -415,6 +415,17 @@ public class Controller implements Initializable {
     }
 
     public void on0(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/DBForm.fxml"));
+            //Panel panel = new Panel();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Оцінювання студента");
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void on1(ActionEvent actionEvent) {
