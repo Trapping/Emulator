@@ -4,8 +4,6 @@ import java.io.File;
 
 public class Core8080 {
 
-        //System.load("D:\\IntelliJ Projects\\Emulator\\src\\libs\\i8080.dll");
-
     public Core8080() {
         String path = new File("i8080.dll").getAbsolutePath();
         System.load(path);

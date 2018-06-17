@@ -361,8 +361,8 @@ public class Controller implements Initializable {
 
 
         core8080.i8080_init();
-        markAddress(Integer.parseUnsignedInt("8000", 16));
-        safeScrollTable(getIndexOfAdressInTable("8000"));
+        markAddress(Integer.parseUnsignedInt("8001", 16));
+        safeScrollTable(getIndexOfAdressInTable("8001"));
         refreshRegs();
 
     }
@@ -477,10 +477,19 @@ public class Controller implements Initializable {
     }
 
     public void onBreak(ActionEvent actionEvent) {
+        Dialog dialog = new Alert(Alert.AlertType.CONFIRMATION);
+        dialog.setTitle("Обережно!");
+        dialog.setContentText("При скиданні всі данні будуть очищені!\nВи впевнені?");
+        dialog.showAndWait();
+
+        if (dialog.getResult().equals(ButtonType.OK)) {
         core8080.i8080_init();
-        markAddress(Integer.parseUnsignedInt("8000", 16));
-        safeScrollTable(getIndexOfAdressInTable("8000"));
+        markAddress(Integer.parseUnsignedInt("8001", 16));
+        safeScrollTable(getIndexOfAdressInTable("8001"));
         refreshRegs();
+        clearTable();
+        tblData.refresh();
+        }
     }
 
     public void onAdPlus(ActionEvent actionEvent) {
@@ -631,9 +640,9 @@ public class Controller implements Initializable {
             //System.out.println(dataModel.toString());
             string.insert(string.length(), dataModel.toString() + "\n");
         }
-        System.out.println(string + "\n Ці данні збережено!");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Збереження програми");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Файл програми емулятора (*.emu)", "*.emu"));
         File file = fileChooser.showSaveDialog(tblData.getScene().getWindow());
 
         try(FileWriter fileWriter = new FileWriter(file)) {
@@ -643,18 +652,43 @@ public class Controller implements Initializable {
         }
     }
 
+    public void clearTable(){
+        for (DataModel dataModel: tblData.getItems()
+             ) {
+            dataModel.setValue(new SimpleStringProperty(""));
+            dataModel.setFlag(new SimpleStringProperty(""));
+            dataModel.setCode(new SimpleStringProperty(""));
+        }
+    }
+
     public void mnFileLoad(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Завантаження програми");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Файл програми емулятора (*.emu)", "*.emu"));
         File file = fileChooser.showOpenDialog(tblData.getScene().getWindow());
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String stringLine;
+            clearTable();
             while ((stringLine = bufferedReader.readLine()) != null){
-                System.out.println(DataModel.parseDataModel(stringLine).toString());
+                DataModel dataModel = DataModel.parseDataModel(stringLine);
+                int index = getIndexOfAdressInTable(dataModel.getAddress().getValue()) -1;
+                tblData.getItems().get(index).setCode(dataModel.getCode());
+                tblData.getItems().get(index).setFlag(dataModel.getFlag());
+                tblData.getItems().get(index).setValue(dataModel.getValue());
             }
         } catch (IOException e){
             e.printStackTrace();
+        } catch (NullPointerException e){
+            Dialog dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.setTitle("Відсутній файл");
+            dialog.setHeaderText("Ви не обрали файл");
+            dialog.setContentText("Оскільки ви не обрали файл для завантаження жодна" +
+                    " збережена програма завантажена не буде!");
         }
+        core8080.i8080_init();
+        markAddress(Integer.parseUnsignedInt("8001", 16));
+        refreshRegs();
+        tblData.refresh();
     }
 
     public void mnFileQuit(ActionEvent actionEvent) {
