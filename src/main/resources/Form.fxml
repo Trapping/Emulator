@@ -43,6 +43,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#onComandsTableClicked" text="Таблиця мнемоніки команд..." />
                </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Журнал">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onSetRating" text="Поставити оцінку..." />
+               </items>
+            </Menu>
         <Menu mnemonicParsing="false" text="Довідка">
           <items>
             <MenuItem mnemonicParsing="false" text="Про програму" />

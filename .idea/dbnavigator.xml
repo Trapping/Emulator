@@ -23,12 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="7db086c4-ef57-4d03-b64d-0577e3d5175d">
-        <schema name="KSAK" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
-        <schema name="Trapping" object-types="function, table, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7db086c4-ef57-4d03-b64d-0577e3d5175d">

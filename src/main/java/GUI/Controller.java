@@ -19,9 +19,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Pair;
 import org.controlsfx.control.textfield.CustomTextField;
 import org.controlsfx.control.textfield.TextFields;
 import org.controlsfx.dialog.ExceptionDialog;
+import org.controlsfx.dialog.LoginDialog;
 
 import java.awt.*;
 import java.io.*;
@@ -415,17 +418,6 @@ public class Controller implements Initializable {
     }
 
     public void on0(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/DBForm.fxml"));
-            //Panel panel = new Panel();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Оцінювання студента");
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void on1(ActionEvent actionEvent) {
@@ -706,5 +698,24 @@ public class Controller implements Initializable {
     }
 
     public void tglSafeInputSelectedChange(ActionEvent actionEvent) {
+    }
+
+    public void onSetRating(ActionEvent actionEvent) {
+        Dialog dialog = new LoginDialog(new Pair<>("Trapping","1111"), null);
+        dialog.setTitle("Авторизація викладача");
+        dialog.setHeaderText("Введіть ваш логін і пароль");
+        dialog.showAndWait();
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/DBForm.fxml"));
+            //Panel panel = new Panel();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Оцінювання студента");
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
